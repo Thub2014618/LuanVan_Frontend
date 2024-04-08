@@ -1,5 +1,4 @@
 <template>
-    <a href="/admin/hoadon">back</a>
 <div class="container row">
         <div class="danh-sach-mon-an">
             <table>

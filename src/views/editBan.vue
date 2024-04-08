@@ -1,34 +1,36 @@
 <template>
     <div class="page">
-      <h4>Thêm Danh Mục</h4>
-      <CTHDForm :CTHD="CTHD"
-       @submit:CTHD="addCTHD" />
+      <h4>Sửa Bàn</h4>
+      <BanForm :Ban="Ban" @submit:ban="editBan" />
     </div>
     {{ message }}
   </template>
   
   <script>
-  import CTHDForm from "@/components/CTHDForm.vue";
+  import BanForm from "@/components/BanForm.vue";
   import AdminService from "@/services/admin.service";
   
   export default {
     components: {
-      CTHDForm,
+      BanForm,
+    },
+    props: {
+      id: { type: String, required: true },
     },
     data() {
       return {
-        CTHD: {},
+        Ban: {},
         message: "",
       };
     },
     methods: {
-      async addCTHD(data) {
+      async editBan(data) {
         try {
-          await AdminService.createCTHD(data);
-          this.message = "đã thêm sản phẩm vào hóa đơn!";
+          await AdminService.updateBan(this.id, data);
+          this.message = "Thao tác thành công!";
         } catch (error) {
           console.error(error);
-          this.message = "Đã xảy ra lỗi khi thêm danh mục.";
+          this.message = "Đã xảy ra lỗi."; 
         }
       },
     },

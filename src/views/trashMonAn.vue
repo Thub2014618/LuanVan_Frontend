@@ -1,5 +1,4 @@
 <template>
-    <a href="/admin">back</a>
     <a href="/admin/monan" class="">mon an</a>
     <div class="container mt-3">
         <div class="row">

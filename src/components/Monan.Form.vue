@@ -7,6 +7,11 @@
     <ErrorMessage name="name" class="error-feedback" />
   </div>
   <div class="form-group">
+    <label for="MA_HINH">Hình ảnh<span class="required">*</span></label>
+    <Field name="MA_HINH" type="text" class="form-control" v-model="food.MA_HINH" required />
+    <ErrorMessage name="MA_HINH" class="error-feedback" />
+  </div>
+  <div class="form-group">
     <label for="description">Mô tả<span class="required">*</span></label>
     <Field name="MA_MOTA" type="text" class="form-control" v-model="food.MA_MOTA" required />
     <ErrorMessage name="description" class="error-feedback" />

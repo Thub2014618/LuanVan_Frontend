@@ -2,20 +2,40 @@ import { createWebHistory, createRouter } from "vue-router";
 
 import login from "@/views/login.vue";
 import admin from "@/views/admin.vue";
+import caLam from "@/views/calam.vue";
+import addCaLam from "@/views/AddCaLam.vue";
+
+import phanquyen from "@/views/phanQuyen.vue";
 import menu from "@/views/menu.vue";
-import addDanhMuc from "@/views/addDanhMuc.vue";
+import addDanhMuc from "@/views/AddDanhMuc.vue";
 import editDanhMuc from "@/views/editDanhMuc.vue";
 import monan from "@/views/monan.vue";
 import editmonan from "@/views/editMonAn.vue";
 import addMonan from "@/views/addMonan.vue";
 import trashmonan from "@/views/trashmonan.vue";
 import hoadon from "@/views/hoadon.vue";
-import addHoaDon from "@/views/AddHoaDon.vue";
+import addHoaDon from "@/views/TaoHoaDon.vue";
 import CTHD from "@/views/CTHD.vue";
 import nhanvien from "@/views/nhanvien.vue";
 import addnhanvien from "@/views/addnhanvien.vue";
 import editnhanvien from "@/views/editNhanVien.vue";
 import addCTHD from "@/views/addCTHD.vue";
+import editBan from "@/views/editBan.vue";
+
+import ban from "@/views/BanAn.vue";
+import addBan from "@/views/addBan.vue";
+
+
+import createHoaDon from "@/views/TaoHoaDon.vue";
+
+// import khuVuc from "@/views/KhuVuc.vue";
+import addKhuVuc from "@/views/addKhuVuc.vue";
+
+import thungan from "@/views/Cashier/index.vue";
+import daubep from "@/views/Chef/index.vue";
+import phucvu from "@/views/Waitstaff/index.vue";
+
+
 
 const routes = [
     {
@@ -28,14 +48,49 @@ const routes = [
         path:"/admin",
         name: "adminpage",
         component: admin,
-        props : true
+        props : true,
+       
     },
+    {
+        path:"/admin/calam",
+        name: "calam",
+        component: caLam,
+        props : true,
+       
+    },
+    {
+        path:"/admin/calam/add",
+        name: "addcalam",
+        component: addCaLam,
+        props : true,
+       
+    },
+   
     {
         path:"/admin/menu",
         name: "menu",
         component: menu,
         props : true
     },
+    {
+        path:"/admin/phanquyen",
+        name: "phanquyen",
+        component: phanquyen,
+        props : true,
+    },
+    // {
+    //     path: "/admin",
+    //     name: "adminpage",
+    //     component: admin,
+    //     children: [
+    //         {
+    //             path:"phanquyen",
+    //             name: "phanquyen",
+    //             component: phanquyen,
+    //             props : true,
+    //         },
+    //     ]
+    // },
     {
         path:"/admin/menu/add",
         name: "addDanhMuc",
@@ -85,20 +140,8 @@ const routes = [
         props : true
     },
     {
-        path:"/admin/HoaDon/:id",
-        name: "cthd",
-        component: CTHD,
-        props : true
-    },
-    {
-        path:"/admin/cthd/:id",
-        name: "CTHDh",
-        component: () => import("@/views/CTHD.vue"),
-        props : true
-    },
-    {
         path:"/admin/CTHD/add",
-        name: "addkHoaDon",
+        name: "addCTHD",
         component: addCTHD,
         props : true
     }, 
@@ -110,7 +153,7 @@ const routes = [
     },
     {
         path:"/admin/NhanVien/add",
-        name: "AddNhanVien",
+        name: "addNhanVien",
         component: addnhanvien,
         props : true
     },
@@ -121,10 +164,79 @@ const routes = [
         props : true
     }, 
     {
+        path:"/admin/ban",
+        name: "ban",
+        component: ban,
+        props : true
+    }, 
+    {
+        path:"/admin/ban/add",
+        name: "addban",
+        component: addBan,
+        props : true
+    }, 
+    {
+        path:"/admin/ban/edit/:id",
+        name: "editBan",
+        component: editBan,
+        props : true
+    },
+    // {
+    //     path:"/admin/KhuVuc",
+    //     name: "KhuVuc",
+    //     component: khuVuc,
+    //     props : true
+    // }, 
+    {
+        path:"/admin/khuVuc/add",
+        name: "addKhuVuc",
+        component: addKhuVuc,
+        props : true
+    }, 
+
+    {
+        path:"/admin/hoadon/create",
+        name: "createhoadon",
+        component: createHoaDon,
+        props : true
+    }, 
+
+
+    {
+        path:"/admin/hoadon/check",
+        name: "checkhd",
+        component: () => import("../views/AddHoaDon.vue"),
+        props : true
+    }, 
+
+
+    {
+        path:"/chef",
+        name: "daubep",
+        component: daubep,
+        props : true
+    }, 
+    {
+        path:"/waitstaff",
+        name: "phucvu",
+        component: phucvu,
+        props : true
+    }, 
+    {
+        path:"/cashier",
+        name: "thungan",
+        component: thungan,
+        props : true
+    }, 
+
+
+
+    {
         path: "/:pathMatch(.*)*",
         name: "notfound",
         component: () => import("@/views/NotFound.vue"),
     },
+
     
 ];
     const router = createRouter({

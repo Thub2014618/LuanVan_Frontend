@@ -5,6 +5,10 @@ import createApiClient from "./api.service";
         this.api = createApiClient(baseUrl);
     }
 
+    async loginAdmin(data) {
+      return (await this.api.post("/login", data)).data;
+   }
+
     async getQuyen() {
         try {
           return (await this.api.get("/quyen")).data;
@@ -34,7 +38,19 @@ import createApiClient from "./api.service";
     }
 
 
+  async getcalam() {
+      return (await this.api.get("/calam")).data;
+  }
+  async createCaLam(data) {
+      return (await this.api.post("/calam", data)).data;
+  }
 
+  async getlichlam() {
+    return (await this.api.get("/lichlam")).data;
+}
+async getLL_NV(id) {
+  return (await this.api.get(`/lichlam/${id}`)).data;
+}
 
     async getMonAn() {
         return (await this.api.get("/MonAn")).data;
@@ -98,14 +114,14 @@ async hideDanhMuc(id) {
 }
 
 
-// async getVaiTro() {
-//   try {
-//     return (await this.api.get("/VaiTro")).data;
-//   } catch (error) {
-//     console.error("Lỗi khi lấy quyền:", error);
-//     throw error; // Ném lỗi để xử lý ở cấp cao hơn
-//   }
-// }
+async getVaiTro() {
+  try {
+    return (await this.api.get("/VaiTro")).data;
+  } catch (error) {
+    console.error("Lỗi khi lấy quyền:", error);
+    throw error; // Ném lỗi để xử lý ở cấp cao hơn
+  }
+}
 async getDMMA() {
   try {
     return (await this.api.patch("/danhmuc")).data;
@@ -184,6 +200,31 @@ async getHoaDon() {
     throw error; // Ném lỗi để xử lý ở cấp cao hơn
   }
 }
+async checkTTHD(id) {
+  return (await this.api.get(`/hoadon/${id}/tt`)).data;
+}
+async getMAHD(data) {
+  return (await this.api.get("/CTHD", data)).data;
+}
+async getCTHD_mahd(id) {
+  return (await this.api.get(`/CTHD/${id}`)).data;
+}
+
+
+async onHD( id ) {
+  return (await this.api.put(`/hoadon/${id}/on`)).data;
+}
+async offHD( id ) {
+  return (await this.api.put(`/hoadon/${id}/off`)).data;
+}
+
+async onCTHD( id ) {
+  return (await this.api.put(`/cthd/${id}/on`)).data;
+}
+async offCTHD( id ) {
+  return (await this.api.put(`/cthd/${id}/off`)).data;
+}
+
 async createHoaDon(data) {
   return (await this.api.post("/HoaDon", data)).data;
 }
@@ -192,6 +233,10 @@ async createCTHD(data) {
 }
 
 async deleteHoaDon() {
+  return (await this.api.delete("/HoaDon")).data;
+}
+
+async TongHoaDon() {
     return (await this.api.delete("/HoaDon")).data;
 }
 
@@ -199,14 +244,91 @@ async findHoaDon(id) {
     return (await this.api.get(`/HoaDon/${id}`)).data;
 }
 
-async updateHoaDon(id, data) {
-  return (await this.api.put(`/HoaDon/${id}`, data)).data;
+// async updateHoaDon(id, data) {
+//   return (await this.api.put(`/HoaDon/${id}`, data)).data;
+// }
+async updateCTHD( data) {
+  return (await this.api.put(`/cthd`, data)).data;
 }
 
 async deleteHoaDon(id) {
   return (await this.api.delete(`/HoaDon/${id}`)).data;
 }
 
+async getKhuVuc() {
+  try {
+    return (await this.api.get("/khuvuc")).data;
+  } catch (error) {
+    console.error("Lỗi khi lấy quyền:", error);
+    throw error; 
+  }
+}
+
+async createKhuVuc(data) {
+  return (await this.api.post("/khuVuc", data)).data;
+}
+
+async updateKhuVuc(id, data) {
+  return (await this.api.put(`/KhuVuc/${id}`, data)).data;
+}
+
+async deleteKhuVuc(id) {
+  return (await this.api.delete(`/KhuVuc/${id}`)).data;
+}
+
+async getBan() {
+  try {
+    return (await this.api.get("/Ban")).data;
+  } catch (error) {
+    console.error("Lỗi khi lấy quyền:", error);
+    throw error; 
+  }
+}
+
+
+async createBan(data) {
+  return (await this.api.post("/Ban", data)).data;
+}
+
+async getBanFromKV(id) {
+  return (await this.api.get(`/KVvsB/${id}`)).data;
+}
+async createCTHD(data) {
+  return (await this.api.post("/CTHD", data)).data;
+}
+
+
+async onBan( id ) {
+  return (await this.api.put(`/ban/${id}/on`)).data;
+}
+async offBan( id ) {
+  return (await this.api.put(`/ban/${id}/off`)).data;
+}
+
+async getHD_MABAN( id ) {
+  return (await this.api.get(`/ban/${id}/hd`)).data;
+}
+async getINFOR_HD_MABAN( id ) {
+  return (await this.api.get(`/ban/${id}/inforhd`)).data;
+}
+async TongBan() {
+    return (await this.api.delete("/Ban")).data;
+}
+
+async findBan(id) {
+    return (await this.api.get(`/Ban/${id}`)).data;
+}
+
+async updateBan(id, data) {
+  return (await this.api.put(`/Ban/${id}`, data)).data;
+}
+
+async deleteBan(id) {
+  return (await this.api.delete(`/Ban/${id}`)).data;
+}
+async deleteAllCTHD(id) {
+  return (await this.api.delete(`/Ban/${id}`)).data;
+}
 
 }
 export default new AdminService();

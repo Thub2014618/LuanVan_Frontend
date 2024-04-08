@@ -17,16 +17,21 @@
           <ErrorMessage name="VT_MA" class="error-feedback" />
         </div> 
 
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="NV_HINH">Hình ảnh</label>
           <Field name="NV_HINH" type="file" class="form-control" v-model="nhanvien.NV_HINH" />
+          <ErrorMessage name="NV_HINH" class="error-feedback" />
+        </div> -->
+        <div class="form-group">
+          <label for="NV_HINH">HìnH nhân viên<span class="required">*</span></label>
+          <Field name="NV_HINH" type="text" class="form-control" v-model="nhanvien.NV_HINH" required />
           <ErrorMessage name="NV_HINH" class="error-feedback" />
         </div>
         <div class="form-group">
           <label for="NV_GIOITINH">Giới tính<span class="required">*</span></label>
           <select v-model="nhanvien.NV_GIOITINH" required>
-            <option  :value="1">NAM</option>
-            <option  :value="0">NỮ</option>
+            <option  :value="0">NAM</option>
+            <option  :value="1">NỮ</option>
 
           </select>
           <ErrorMessage name="VT_MA" class="error-feedback" />

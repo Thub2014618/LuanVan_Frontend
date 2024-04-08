@@ -19,12 +19,18 @@ export default {
     return {
       HoaDon: {},
       message: "",
+      // dt: {}
     };
   },
   methods: {
     async addHoaDon(data) {
         try {
-          await AdminService.createHoaDon(data);
+          this.dt = await AdminService.createHoaDon(data);
+
+          this.$router.push({ params: this.dt.HD_MA ,name: addCTHD});
+
+          this.$router.push({ name: addCTHD});
+
           this.message = "Hóa đơn đã được thêm thành công!";
         } catch (error) {
           console.error(error);

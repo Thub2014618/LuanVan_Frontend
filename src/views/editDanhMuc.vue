@@ -23,7 +23,6 @@ export default {
     return {
       DanhMuc: {},
       message: "",
-      // data: params.id
     };
   },
   methods: {
